@@ -41,16 +41,27 @@ namespace BlackScreenPopup
                 int y = ((int)m.LParam >> 16) & 0xFFFF;
                 Point cursorPos = PointToClient(new Point(x, y));
 
-                if (cursorPos.Y <= 5) m.Result = (IntPtr)HT_TOP;
-                else if (cursorPos.Y >= ClientSize.Height - 5) m.Result = (IntPtr)HT_BOTTOM;
-                else if (cursorPos.X <= 5) m.Result = (IntPtr)HT_LEFT;
-                else if (cursorPos.X >= ClientSize.Width - 5) m.Result = (IntPtr)HT_RIGHT;
-                else if (cursorPos.X <= 5 && cursorPos.Y <= 5) m.Result = (IntPtr)HT_TOPLEFT;
-                else if (cursorPos.X >= ClientSize.Width - 5 && cursorPos.Y <= 5) m.Result = (IntPtr)HT_TOPRIGHT;
-                else if (cursorPos.X <= 5 && cursorPos.Y >= ClientSize.Height - 5) m.Result = (IntPtr)HT_BOTTOMLEFT;
-                else if (cursorPos.X >= ClientSize.Width - 5 && cursorPos.Y >= ClientSize.Height - 5) m.Result = (IntPtr)HT_BOTTOMRIGHT;
-                else m.Result = (IntPtr)HT_CAPTION;
-            }
+                const int cornerSize = 10;
+
+                if (cursorPos.Y <= cornerSize && cursorPos.X <= cornerSize)
+                    m.Result = (IntPtr)HT_TOPLEFT;
+                else if (cursorPos.Y <= cornerSize && cursorPos.X >= ClientSize.Width - cornerSize)
+                    m.Result = (IntPtr)HT_TOPRIGHT;
+                else if (cursorPos.Y >= ClientSize.Height - cornerSize && cursorPos.X <= cornerSize)
+                    m.Result = (IntPtr)HT_BOTTOMLEFT;
+                else if (cursorPos.Y >= ClientSize.Height - cornerSize && cursorPos.X >= ClientSize.Width - cornerSize)
+                    m.Result = (IntPtr)HT_BOTTOMRIGHT;
+                else if (cursorPos.Y <= cornerSize)
+                    m.Result = (IntPtr)HT_TOP;
+                else if (cursorPos.Y >= ClientSize.Height - cornerSize)
+                    m.Result = (IntPtr)HT_BOTTOM;
+                else if (cursorPos.X <= cornerSize)
+                    m.Result = (IntPtr)HT_LEFT;
+                else if (cursorPos.X >= ClientSize.Width - cornerSize)
+                    m.Result = (IntPtr)HT_RIGHT;
+                else
+                    m.Result = (IntPtr)HT_CAPTION;
+            }   
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
