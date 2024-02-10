@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 public class CustomSlider : UserControl
@@ -63,8 +64,14 @@ public class CustomSlider : UserControl
 
     private void DrawSlider(Graphics g)
     {
+        Color startColor = ColorTranslator.FromHtml("#B9FF42");
+        Color endColor = ColorTranslator.FromHtml("#000000");
+
         int trackHeight = 1;
-        using (var trackBrush = new SolidBrush(ColorTranslator.FromHtml("#1C1C1C")))
+        using (var trackBrush = new LinearGradientBrush(
+            new Point(0, Height / 2 - trackHeight / 2),
+            new Point(Width, Height / 2 - trackHeight / 2),
+            startColor, endColor))
         {
             g.FillRectangle(trackBrush, 0, Height / 2 - trackHeight / 2, Width, trackHeight);
         }
@@ -72,7 +79,7 @@ public class CustomSlider : UserControl
         float percent = (float)(Value - Minimum) / (Maximum - Minimum);
         int thumbX = (int)(percent * Width);
 
-        int thumbWidth = 10;
+        int thumbWidth = 6;
         using (var thumbBrush = new SolidBrush(ColorTranslator.FromHtml("#B9FF42")))
         {
             g.FillEllipse(thumbBrush, thumbX - thumbWidth / 2, Height / 2 - thumbWidth / 2, thumbWidth, thumbWidth);

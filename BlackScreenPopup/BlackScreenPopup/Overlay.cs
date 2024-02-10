@@ -23,9 +23,7 @@ namespace BlackScreenPopup
         [DllImportAttribute("user32.dll")]
 
         public static extern bool ReleaseCapture();
-
         private CustomSlider transparencySlider;
-
 
         public Overlay()
         {
@@ -35,11 +33,9 @@ namespace BlackScreenPopup
 
             transparencySlider = new CustomSlider();
             transparencySlider.Visible = false;
-            transparencySlider.Location = new Point(transparencyButton.Left - transparencySlider.Width - 5, transparencyButton.Top + 3);
-
-            UpdateSliderPosition();
+            transparencySlider.Location = new Point(transparencyButton.Left - transparencySlider.Width - -55, transparencyButton.Top + 1);
             transparencySlider.ValueChanged += TransparencySlider_ValueChanged;
-            transparencyButton.LocationChanged += TransparencyButton_LocationChanged;
+            transparencySlider.Size = new Size(80, 20);
             this.Controls.Add(transparencySlider);
         }
 
@@ -79,26 +75,15 @@ namespace BlackScreenPopup
         private void TransparencySlider_ValueChanged(object sender, EventArgs e)
         {
             double transparencyValue = (100 - transparencySlider.Value) / 100.0;
-
             const double minTransparency = 0.5;
-            transparencyValue = Math.Max(minTransparency, transparencyValue);
 
+            transparencyValue = Math.Max(minTransparency, transparencyValue);
             this.Opacity = transparencyValue;
         }
 
         private void transparencyButton_Click(object sender, EventArgs e)
         {
             transparencySlider.Visible = !transparencySlider.Visible;
-        }
-
-        private void UpdateSliderPosition()
-        {
-            transparencySlider.Location = new Point(transparencyButton.Left - transparencySlider.Width - 5, transparencyButton.Top + 3);
-        }
-
-        private void TransparencyButton_LocationChanged(object sender, EventArgs e)
-        {
-            UpdateSliderPosition();
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
