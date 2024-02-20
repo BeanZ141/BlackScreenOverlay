@@ -1,0 +1,10 @@
+C:\Users\BeanZ\Documents\BlackScreenPopup\BlackScreenPopup\bin\Release\BlackScreenPopup.exe.config
+C:\Users\BeanZ\Documents\BlackScreenPopup\BlackScreenPopup\bin\Release\BlackScreenPopup.exe
+C:\Users\BeanZ\Documents\BlackScreenPopup\BlackScreenPopup\bin\Release\BlackScreenPopup.pdb
+C:\Users\BeanZ\Documents\BlackScreenPopup\BlackScreenPopup\obj\Release\BlackScreenPopup.csproj.AssemblyReference.cache
+C:\Users\BeanZ\Documents\BlackScreenPopup\BlackScreenPopup\obj\Release\BlackScreenPopup.Overlay.resources
+C:\Users\BeanZ\Documents\BlackScreenPopup\BlackScreenPopup\obj\Release\BlackScreenPopup.Properties.Resources.resources
+C:\Users\BeanZ\Documents\BlackScreenPopup\BlackScreenPopup\obj\Release\BlackScreenPopup.csproj.GenerateResource.cache
+C:\Users\BeanZ\Documents\BlackScreenPopup\BlackScreenPopup\obj\Release\BlackScreenPopup.csproj.CoreCompileInputs.cache
+C:\Users\BeanZ\Documents\BlackScreenPopup\BlackScreenPopup\obj\Release\BlackScreenPopup.exe
+C:\Users\BeanZ\Documents\BlackScreenPopup\BlackScreenPopup\obj\Release\BlackScreenPopup.pdb
